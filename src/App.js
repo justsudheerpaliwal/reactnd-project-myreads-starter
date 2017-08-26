@@ -7,6 +7,11 @@ import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.changeBookShelf = this.changeBookShelf.bind(this);
+  }
+
   state = {
     currentlyReading: undefined,
     read: undefined,
@@ -15,8 +20,21 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then(data => {
+      this.books = data;
       this.filterBooks(data);
     });
+  }
+
+  changeBookShelf(book, shelf) {
+    BooksAPI.update(book, shelf).then(
+      data=> {
+        this.books.map(stateBook => {
+          if (stateBook.id === book.id) {
+            stateBook.shelf = shelf;
+          }
+        });
+        this.filterBooks(this.books);
+      });
   }
 
   filterBooks(books) {
@@ -32,6 +50,7 @@ class BooksApp extends React.Component {
       } 
     )
   }
+  
   render() {
     return (
       <div className="app">
@@ -42,6 +61,7 @@ class BooksApp extends React.Component {
             currentlyReading={this.state.currentlyReading}
             read={this.state.read}
             wantToRead={this.state.wantToRead}
+            changeBookShelf={this.changeBookShelf}
           />} />
       </div>
     )
