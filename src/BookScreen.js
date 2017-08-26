@@ -18,7 +18,7 @@ class BookScreen extends React.Component {
                                     { 
                                         this.props.currentlyReading && (this.props.currentlyReading.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} shelf="currentlyReading" changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
                                             </li>
                                     }))}
                                 </ol>
@@ -31,7 +31,7 @@ class BookScreen extends React.Component {
                                     { 
                                         this.props.wantToRead && (this.props.wantToRead.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} shelf="wantToRead" changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
                                             </li>
                                     }))}
                                 </ol>
@@ -44,7 +44,7 @@ class BookScreen extends React.Component {
                                     { 
                                         this.props.read && (this.props.read.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} shelf="read" changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
                                             </li>
                                     }))}
                                 </ol>
