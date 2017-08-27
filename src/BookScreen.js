@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import BookDetail from './BookDetail'
 
 class BookScreen extends React.Component {
@@ -15,12 +15,12 @@ class BookScreen extends React.Component {
                             <h2 className="bookshelf-title">Currently Reading</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                    { 
+                                    {
                                         this.props.currentlyReading && (this.props.currentlyReading.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key={book.id} book={book} changeBookShelf={this.props.changeBookShelf} />
                                             </li>
-                                    }))}
+                                        }))}
                                 </ol>
                             </div>
                         </div>
@@ -28,12 +28,12 @@ class BookScreen extends React.Component {
                             <h2 className="bookshelf-title">Want to Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                    { 
+                                    {
                                         this.props.wantToRead && (this.props.wantToRead.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key={book.id} book={book} changeBookShelf={this.props.changeBookShelf} />
                                             </li>
-                                    }))}
+                                        }))}
                                 </ol>
                             </div>
                         </div>
@@ -41,12 +41,12 @@ class BookScreen extends React.Component {
                             <h2 className="bookshelf-title">Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                    { 
+                                    {
                                         this.props.read && (this.props.read.map((book) => {
                                             return <li key={book.id}>
-                                                <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
+                                                <BookDetail key={book.id} book={book} changeBookShelf={this.props.changeBookShelf} />
                                             </li>
-                                    }))}
+                                        }))}
                                 </ol>
                             </div>
                         </div>
