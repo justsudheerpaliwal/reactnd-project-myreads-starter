@@ -41,6 +41,7 @@ class BooksApp extends React.Component {
           return stateBook;
         });
         !bookFound && (newState.push(book))
+        newState = newState.filter((book)=>book.shelf !== 'none');
         return {books: newState};
       }
     );

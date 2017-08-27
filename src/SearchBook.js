@@ -2,8 +2,14 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import BookDetail from './BookDetail'
 import * as BooksAPI from './BooksAPI'
+import PropTypes from 'prop-types';
 
 class SearchBook extends React.Component {
+
+    static propTypes = {
+        selvedBooks : PropTypes.array,
+        changeBookShelf: PropTypes.func
+    }
 
     constructor(props) {
         super(props)
@@ -15,7 +21,7 @@ class SearchBook extends React.Component {
     }
 
     fetchQueryResult(event) {
-        this.setState({query:event.target.value}, this.fetchBooks(this.state.query));
+        this.setState({query:event.target.value.trim()}, this.fetchBooks(this.state.query));
     }
 
     fetchBooks(query) {

@@ -1,6 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 class BookDetail extends React.Component {
+    static propTypes = {
+        book : PropTypes.object,
+        changeBookShelf: PropTypes.func
+    }
     render() {
         return (
             <div className="book">
