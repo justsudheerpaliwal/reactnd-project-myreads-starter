@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({books});
+      this.setState({ books });
     });
   }
 
@@ -32,18 +32,18 @@ class BooksApp extends React.Component {
 
   setUpdatedShelfState(book, shelf) {
     this.setState((prevState) => {
-        let bookFound = false;
-        let newState = prevState.books.map(stateBook => {
-          if (stateBook.id === book.id) {
-            stateBook.shelf = shelf;
-            bookFound = true;
-          }
-          return stateBook;
-        });
-        !bookFound && (newState.push(book))
-        newState = newState.filter((book)=>book.shelf !== 'none');
-        return {books: newState};
-      }
+      let bookFound = false;
+      let newState = prevState.books.map(stateBook => {
+        if (stateBook.id === book.id) {
+          stateBook.shelf = shelf;
+          bookFound = true;
+        }
+        return stateBook;
+      });
+      !bookFound && (newState.push(book))
+      newState = newState.filter((book) => book.shelf !== 'none');
+      return { books: newState };
+    }
     );
   }
 
@@ -57,13 +57,13 @@ class BooksApp extends React.Component {
     this.filterBooks(this.state.books);
     return (
       <div className="app">
-        <Route 
-          path="/search" 
-          render = {() => <SearchBook 
+        <Route
+          path="/search"
+          render={() => <SearchBook
             changeBookShelf={this.changeBookShelf}
-            selvedBooks= {this.state.books}
+            selvedBooks={this.state.books}
           />
-        } />
+          } />
         <Route exact
           path="/"
           render={() => <BookScreen

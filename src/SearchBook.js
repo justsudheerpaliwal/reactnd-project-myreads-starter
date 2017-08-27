@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import BookDetail from './BookDetail'
 import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 class SearchBook extends React.Component {
 
     static propTypes = {
-        selvedBooks : PropTypes.array,
+        selvedBooks: PropTypes.array,
         changeBookShelf: PropTypes.func
     }
 
@@ -21,20 +21,20 @@ class SearchBook extends React.Component {
     }
 
     fetchQueryResult(event) {
-        this.setState({query:event.target.value.trim()}, this.fetchBooks(this.state.query));
+        this.setState({ query: event.target.value.trim() }, this.fetchBooks(this.state.query));
     }
 
     fetchBooks(query) {
         query && BooksAPI.search(query, 20).then(
             (books) => {
                 this.populateBooksSelf(books);
-                this.setState({books});
+                this.setState({ books });
             }
         ).catch(
-            (error) => this.setState({books: []})
-        );
+            (error) => this.setState({ books: [] })
+            );
     }
-    
+
     populateBooksSelf(books) {
         books.map((book) => {
             let matchedBook = this.props.selvedBooks.filter(
@@ -58,7 +58,7 @@ class SearchBook extends React.Component {
                         {
                             this.state.books.map((book) => {
                                 return <li key={book.id}>
-                                    <BookDetail key= {book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
+                                    <BookDetail key={book.id} book={book} changeBookShelf={this.props.changeBookShelf} />
                                 </li>
                             })
                         }
@@ -66,6 +66,6 @@ class SearchBook extends React.Component {
                 </div>
             </div>
         );
-    }   
+    }
 }
 export default SearchBook

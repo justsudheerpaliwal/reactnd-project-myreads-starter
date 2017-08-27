@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 class BookShelf extends React.Component {
     static propTypes = {
-        books : PropTypes.array,
-        shelfName : PropTypes.string,
+        books: PropTypes.array,
+        shelfName: PropTypes.string,
         changeBookShelf: PropTypes.func
     }
     render() {
@@ -18,10 +18,10 @@ class BookShelf extends React.Component {
                         {
                             this.props.books && (this.props.books.map((book) => {
                                 return <li key={book.id}>
-                                    <BookDetail 
-                                    key={book.id} 
-                                    book={book} 
-                                    changeBookShelf={this.props.changeBookShelf} />
+                                    <BookDetail
+                                        key={book.id}
+                                        book={book}
+                                        changeBookShelf={this.props.changeBookShelf} />
                                 </li>
                             }))}
                     </ol>
