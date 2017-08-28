@@ -21,11 +21,14 @@ class SearchBook extends React.Component {
     }
 
     fetchQueryResult(event) {
-        this.setState({ query: event.target.value.trim() }, this.fetchBooks(this.state.query));
+        this.setState({ query: event.target.value.trim() }, this.fetchBooks);
     }
 
-    fetchBooks(query) {
-        query && BooksAPI.search(query, 20).then(
+    fetchBooks() {
+        if(!this.state.query) {
+            this.setState({books: []});
+        }
+        this.state.query && BooksAPI.search(this.state.query, 20).then(
             (books) => {
                 this.populateBooksSelf(books);
                 this.setState({ books });
